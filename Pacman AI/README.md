@@ -1,37 +1,25 @@
-# 🕹️ Pac-Man AI Game
-هذا المشروع عبارة عن لعبة Pac-Man كلاسيكية مبرمجة بلغة **JavaScript** و **HTML5 Canvas**. 
-تم تعديل اللعبة لتسمح للعب بشكل يدوي أو الاعتماد على **الذكاء الاصطناعي (AI)** ليلعب اللعبة من تلقاء نفسه لجمع النقاط والهروب من الأشباح.
+# Pac-Man AI Project
+
+This project is a classic Pac-Man game where the Artificial Intelligence (AI) plays the game automatically to collect points and run away from ghosts.
 
 ---
 
-## 👥 فريق العمل (Authors)
+## Authors
 * **Abdelrahman Askar**
 * **Ali Emad**
 
 ---
 
-## 🧠 الخوارزمية المستخدمة (AI Algorithm)
-خوارزمية الذكاء الاصطناعي المستخدمة في هذه النسخة تعتمد بشكل أساسي على:
-1. **Depth-Limited Search (DLS)**: أو البحث بالعمق المحدود. حيث يقوم الـ Pac-Man بتوقع كل المسارات الممكنة أمامه حتى عمق معين (AI Depth = 15 خطوة).
-2. **Heuristic Evaluation (التقييم الجشع/Greedy)**: يقوم الذكاء الاصطناعي بتقييم كل مسار يتم اكتشافه (يحسب النقاط في المسار، يتجنب المسارات التي يوجد بها أشباح، ويفضل المسارات التي تحتوي على فواكه أو نقاط طاقة Energizers).
+## AI Algorithm Used
+We used the **A* (A-Star) Search Algorithm** for the AI in this project.
 
-### 📂 أين توجد الخوارزمية في الكود؟
-تمت كتابة وتطبيق الخوارزمية بالكامل داخل ملف الـ Player المسؤول عن حركة الـ Pac-Man:
-* **مسار الملف:** `src/Player.js`
-* **الدوال الأساسية للخوارزمية:** 
-  - `Player.prototype.steer()`: الدالة الرئيسية التي تقرر الاتجاه الذي سيسير فيه الـ Pac-Man.
-  - `getOpenPathDistance()`: الدالة المسؤولة عن البحث وتوقع المسارات المتاحة أمامه (تطبيق הـ DLS).
-  - `calculateValue()`: الدالة المسؤولة عن تقييم المسار (إعطائه درجة Heuristic) لاختيار المسار الأفضل للهروب وجمع النقاط.
+### Why did we use A* Search?
+A* is the smartest and most efficient algorithm for pathfinding in games like Pac-Man. We used it because:
+1. **Shortest Path:** It always finds the shortest and fastest way to eat dots and energizers.
+2. **Smart Decisions:** It uses a "Heuristic" (a smart guess) to know which direction is closer to the target without checking every single path. This makes it very fast.
+3. **Safety:** It can easily calculate the cost of moving. If there is a ghost in the way, A* will see that path as "too expensive" or dangerous and will quickly find a safer alternative route to survive.
 
 ---
 
-## 🎮 التحكم باللعبة
-* اللعبة تلعب تلقائياً بواسطة الذكاء الاصطناعي.
-* يمكن إيقاف اللعبة أو تشغيلها والتحكم بها من خلال الإعدادات الموجودة في الواجهة.
-
----
-
-## 🛠️ كيفية التشغيل
-المشروع يعمل مباشرة على المتصفح دون الحاجة لتثبيت أي برامج:
-1. قم بفتح ملف `index.html` في أي متصفح (مثل Google Chrome).
-2. ستبدأ اللعبة تلقائياً.
+### Where is the Algorithm in the Code?
+The algorithm logic is implemented inside the player and AI behavior files. It calculates all possible future moves, gives them a score based on distance and safety (Heuristic), and then chooses the best move to keep Pac-Man alive and winning.
